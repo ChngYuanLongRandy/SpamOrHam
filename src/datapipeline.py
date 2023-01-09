@@ -128,7 +128,7 @@ class Datapipeline:
 
         self._fit(df_train)
 
-        y = df.pop('label')
+        y = df.pop('spam')
 
         df['length'] = self.ss.transform(df['length'].values.reshape(-1,1))
         if self.countvec_bool:
