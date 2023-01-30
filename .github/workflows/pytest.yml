@@ -13,7 +13,7 @@ jobs:
       - uses: s-weigand/setup-conda@v1
         with:
           activate-conda: false
-      - run: conda env create conda-env.yml && conda activate spam-env
+      # - run: conda env create conda-env.yml && conda activate spam-env
       - run: pip install -r tests-requirements.txt
       - run: export PYTHONPATH=.
       - run: pytest
