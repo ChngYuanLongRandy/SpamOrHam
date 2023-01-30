@@ -19,8 +19,6 @@ jobs:
       - run: |
           conda info
           conda list
-          conda env create -f conda-env.yml
-          conda activate spam-env
-      - run: pip install -r tests-requirements.txt
-      - run: export PYTHONPATH=.
-      - run: python -m pytest
+          pip install -r tests-requirements.txt
+          export PYTHONPATH=.
+          python -m pytest
