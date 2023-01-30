@@ -1,71 +1,9 @@
 import numpy as np
 import pandas as pd
-import re
 from typing import List
 from sklearn.preprocessing import StandardScaler
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer 
-
-def add_scamy_words(data:pd.DataFrame, scamy_words:List[str]):
-    """Add feature of scamy words
-
-    Args:
-        data (pd.DataFrame): df
-        scamy_words (List[str]): list of scamy words
-    """
-    data['scamy_words']= data['text'].apply(lambda x: any([k in x for k in scamy_words]))
-    data['scamy_words'] = data['scamy_words'].astype('int')
-
-def add_length(data:pd.DataFrame):
-    """add length feature into the DF
-
-    Args:
-        data (pd.DataFrame): df
-    """
-    data['length'] = data['text'].apply(lambda x : len(x.strip()))
-    empty_indicies = data[data['length']==0].index
-    data.drop(index=empty_indicies, inplace= True)
-
-def add_numbers(data:pd.DataFrame):
-    """add number feature into the DF
-
-    Args:
-        data (pd.DataFrame): df
-    """
-    data['numbers']= data['text'].str.extract(r"(\d+)")
-    data[data.numbers.isna() == False]['numbers'] = 1
-    data.numbers.fillna(0, inplace=True)
-    data['numbers'] = data['numbers'].apply(lambda x: 1 if x !=0 else 0)
-
-def add_features(data:pd.DataFrame,scamy_words:List[str]):
-    """ add all features into the DF
-    """
-    add_length(data)
-    add_scamy_words(data, scamy_words)
-    add_numbers(data)
-
-def remove_empy_strings(data_copy:pd.DataFrame):
-    """ remove any empty strings from the df
-    """
-    data = data_copy.copy()
-    empty_indicies = data[data['length']==0].index
-    data.drop(index=empty_indicies, inplace= True)
-    return data
-
-def transform(data:pd.DataFrame,scamy_words:List[str], training:bool= True):
-    # remove dups
-    data.drop_duplicates(inplace=True)
-
-    # remove NAs
-    data.dropna(inplace=True)
-
-    # add features
-    add_features(data,scamy_words)
-
-    return data
-
-def scale_after_transform(data:pd.DataFrame):
-    pass
 
 class Datapipeline:
     """Pipeline class to take in training, validation and test sets 
