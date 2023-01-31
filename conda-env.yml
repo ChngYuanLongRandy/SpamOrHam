@@ -7,15 +7,4 @@ dependencies:
   - pip=20.2.2
   - spacy-model-en_core_web_lg
   - pip:
-    - pandas
-    - scikit-learn
-    - matplotlib
-    - ipykernel
-    - seaborn
-    - imblearn
-    - tensorflow
-    - spacy
-    - gensim
-    - langdetect
-    - wordcloud
-    - kaggle
+    - -r api-requirements.txt
