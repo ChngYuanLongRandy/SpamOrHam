@@ -7,4 +7,4 @@ dependencies:
   - pip=20.2.2
   - spacy-model-en_core_web_lg
   - pip:
-    - -r requirements.txt
+    - -r api-requirements.txt
