@@ -22,3 +22,7 @@ docker run -it <image name>:<tag> -p 8000
 ```
 
 Access at `localhost:8000/docs`
+
+## As URL
+
+Available [here](https://simple-spam-classifier-4fhoqe4txq-as.a.run.app/docs)
