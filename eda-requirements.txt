@@ -1,0 +1,9 @@
+matplotlib
+ipykernel
+seaborn
+imblearn
+spacy
+gensim
+langdetect
+wordcloud
+kaggle
